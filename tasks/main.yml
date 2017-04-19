@@ -1,2 +1,20 @@
 ---
-# tasks file for ansible-role-schema-registry
+- name: Install JDK
+  zypper:
+    name: "{{ jdk_package }}"
+
+- name: Import Schema Registry Repository Public Key
+  rpm_key:
+    state: present
+    key: "{{ schema_registry_rpm_repo_key }}"
+
+- name: Add Schema Registry Repository
+  zypper_repository:
+    state: present
+    name: "Confluent Package Mirror"
+    repo: "{{ schema_registry_rpm_repo }}"
+
+- name: Install Schema Registry
+  zypper:
+    state: present
+    name: "{{ schema_registry_rpm }}"
