@@ -2,6 +2,7 @@
 - name: Install JDK
   zypper:
     name: "{{ jdk_package }}"
+  when: "{{ install_jdk }} is true"
 
 - name: Import Schema Registry Repository Public Key
   rpm_key:
