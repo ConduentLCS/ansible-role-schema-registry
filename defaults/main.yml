@@ -3,3 +3,4 @@ schema_registry_rpm_repo_key: "http://packages.confluent.io/rpm/2.0/archive.key"
 schema_registry_rpm_repo: "http://packages.confluent.io/rpm/2.0"
 schema_registry_rpm: "confluent-schema-registry=2.0.1-1"
 install_jdk: false
+install_from_confluent: true

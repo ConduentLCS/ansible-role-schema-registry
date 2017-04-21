@@ -4,16 +4,25 @@
     name: "{{ jdk_package }}"
   when: "{{ install_jdk }}"
 
-- name: Import Schema Registry Repository Public Key
+- name: Import Confluent Repository Public Key
   rpm_key:
     state: present
     key: "{{ schema_registry_rpm_repo_key }}"
+  when: "{{ install_from_confluent }}"
 
-- name: Add Schema Registry Repository
+- name: Add Confluent Repository
   zypper_repository:
     state: present
     name: "Confluent Package Mirror"
     repo: "{{ schema_registry_rpm_repo }}"
+  when: "{{ install_from_confluent }}"
+
+- name: Add Custom Confluent Repository
+  zypper_repository:
+    state: present
+    name: "Confluent Package Mirror"
+    repo: "{{ schema_registry_rpm_repo }}"
+  when:  "not {{ install_from_confluent }}"
 
 - name: Install Schema Registry
   zypper:

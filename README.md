@@ -15,8 +15,9 @@ Role Variables
 * Optional
     * `install_jdk` -- Defaults to "false". jdk\_package is required to be set if `install_jdk` is true
         * `jdk_package` -- A string that should be [jdk package name]=[jdk package version].  The install is done with zypper so anything that zypper can handle syntax wise should work.
-    * `schema_registry_rpm_repo_key` -- Defaults to "http://packages.confluent.io/rpm/2.0/archive.key".
-    * `schema_registry_rpm_repo` -- Defaults to "http://packages.confluent.io/rpm/2.0"
+    * `install_from_confluent` -- Defaults to "true". Both of the below variables are required if this is "true".  If it's "false", only `schema_registry_rpm_repo` is required.
+        * `schema_registry_rpm_repo_key` -- Defaults to "http://packages.confluent.io/rpm/2.0/archive.key".
+        * `schema_registry_rpm_repo` -- Defaults to "http://packages.confluent.io/rpm/2.0"
     * `schema_registry_rpm` -- Defaults to "confluent-schema-registry=2.0.1-1"
 
 Dependencies
