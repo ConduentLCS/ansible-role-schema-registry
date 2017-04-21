@@ -12,12 +12,12 @@ Presumes that you're installing on SLES 12 with a local repo that has a JDK pack
 Role Variables
 --------------
 
-* Required
-    * jdk\_package -- A string that should be [jdk package name]=[jdk package version].  The install is done with zypper so anything that zypper can handle syntax wise should work.
 * Optional
-    * schema\_registry\_rpm\_repo\_key -- Defaults to "http://packages.confluent.io/rpm/2.0/archive.key".
-    * schema\_registry\_rpm\_repo -- Defaults to "http://packages.confluent.io/rpm/2.0"
-    * schema\_registry\_rpm -- Defaults to "confluent-schema-registry=2.0.1-1"
+    * `install_jdk` -- Defaults to "false". jdk\_package is required to be set if `install_jdk` is true
+        * `jdk_package` -- A string that should be [jdk package name]=[jdk package version].  The install is done with zypper so anything that zypper can handle syntax wise should work.
+    * `schema_registry_rpm_repo_key` -- Defaults to "http://packages.confluent.io/rpm/2.0/archive.key".
+    * `schema_registry_rpm_repo` -- Defaults to "http://packages.confluent.io/rpm/2.0"
+    * `schema_registry_rpm` -- Defaults to "confluent-schema-registry=2.0.1-1"
 
 Dependencies
 ------------
@@ -31,7 +31,7 @@ Including an example of how to use your role (for instance, with variables passe
 
     - hosts: servers
       roles:
-         - { role: brandisher.schema-registry, jdk_package: "jdk=1.8.0_u71" }
+         - { role: brandisher.schema-registry }
 
 License
 -------
